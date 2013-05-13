@@ -1,0 +1,4 @@
+echo "Installing requirements"
+. $OPENSHIFT_HOMEDIR/python-2.7/activate_virtenv
+pip install -r $OPENSHIFT_REPO_DIR/requirements.txt
+echo "Installing requirements done"
