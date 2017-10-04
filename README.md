@@ -1,22 +1,50 @@
-getting-started-python
-======================
+# getting-started-python
 
-[![Wercker
-status](https://app.wercker.com/status/b312ecb5c6fdd7c6eb871455a5b8964e/s)](https://app.wercker.com/project/bykey/b312ecb5c6fdd7c6eb871455a5b8964e)
+[![Wercker status](https://app.wercker.com/status/b312ecb5c6fdd7c6eb871455a5b8964e/s)](https://app.wercker.com/project/bykey/b312ecb5c6fdd7c6eb871455a5b8964e)
 
-Python sample application for wercker leveraging the Flask
-microframework
+This is a sample Python application, using the Flask microframework, for use with Wercker.  This application uses the `2.7:slim` container obtained from the [Docker Hub](https://hub.docker.com/_/node/)
 
-To run the application, make sure you have the [wercker cli installed with it's proper requirements](http://devcenter.wercker.com/learn/basics/the-wercker-cli.html).
+## Setup
+Firstly, ensure you have the [wercker cli installed](http://devcenter.wercker.com/learn/basics/the-wercker-cli.html).
 
-Once you have all that set up, you can start the application by running `wercker dev --publish 5000`. 
+Now clone this repo and cd into the directory:
 
-This will run your application inside your Docker host. The `wercker dev` command will tell you the address and port you can find the application on.
+```
+git clone https://github.com/wercker/getting-started-python.git
+cd getting-started-python
+```
 
-If you have any problems or questions with running the project, don't hesitate to open a new issue!
+## Running
+You can run the sample app in a couple of different ways. With Flask installed locally along with Python, the first is to simply launch the sample app:
+```
+python app.py
+```
 
-Note: this sample application only runs on the Ewok stack (version 5) on wercker
+Now point your browser at `http://localhost:5000` to see:
+```
+Hello World!
+```
+or at `http://localhost:5000/cities.json` to see:
+```
+{"cities": ["San Francisco", "Amsterdam", "Berlin", "New York", "Tokyo"]}
+```
+
+The second, and more useful, way is to use the `wercker dev` command to launch the binary within a Docker container, using the base image defined in the `box:id` property at the top of the `wercker.yml`, like so:
+```
+wercker dev --expose-ports
+```
+The `dev` target inside `wercker.yml` uses the `internal/watch` step to dynamically reload the runtime container when sourcefile changes are detected, which allows you to quickly test changes without having to kill/rebuild/relaunch the container. For instance, add another city to the array on `app.py:14' like so:
+
+```
+data = {"cities" : ["San Francisco", "Amsterdam", "Berlin", "New York", "Tokyo", "London"]}
+```
+
+and then refresh your browser pointing to `http://localhost:5000/cities.` to see:
+```
+["Amsterdam", "San Francisco", "Berlin", "New York", "Tokyo", "London"]
+```
 
 ---
-Sign up for wercker [here](http://wercker.com)
-Learn more on our [dev center](http://devcenter.wercker.com)
+Sign up for Wercker: http://www.wercker.com
+
+Learn more at: http://devcenter.wercker.com

@@ -1,10 +1,15 @@
-box: python:2.7-slim
+box:
+  id: python:2.7-slim
+  ports:
+    - "5000"
+
 dev:
   steps:
     - pip-install
     - internal/watch:
         code: python app.py
         reload: true
+        
 # Build definition
 build:
   # The steps that will be executed on build
