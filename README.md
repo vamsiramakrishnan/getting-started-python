@@ -2,9 +2,9 @@
 
 [![Wercker status](https://app.wercker.com/status/b312ecb5c6fdd7c6eb871455a5b8964e/s)](https://app.wercker.com/project/bykey/b312ecb5c6fdd7c6eb871455a5b8964e)
 
-This is a sample Python application, using the Flask microframework, for use with Wercker.  This application uses the `2.7:slim` container obtained from the [Docker Hub](https://hub.docker.com/_/node/)
+This is a sample Python application, using the Flask microframework, for use with Wercker.  This application uses the `2.7:slim` container obtained from the [Docker Hub](https://hub.docker.com/_/python/)
 
-## Setup
+## Setup and Build
 Firstly, ensure you have the [wercker cli installed](http://devcenter.wercker.com/learn/basics/the-wercker-cli.html).
 
 Now clone this repo and cd into the directory:
@@ -12,6 +12,11 @@ Now clone this repo and cd into the directory:
 ```
 git clone https://github.com/wercker/getting-started-python.git
 cd getting-started-python
+```
+
+To build and test the app:
+```
+wercker build
 ```
 
 ## Running
