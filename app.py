@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello World"
+    return "Hello World!"
 
 @app.route('/cities.json')
 def cities():
-    data = ['Amsterdam', 'San Francisco', 'Berlin', 'New York']
+    data = {"cities" : ["Amsterdam", "San Francisco", "Berlin", "New York", "Tokyo"]}
     resp = Response(json.dumps(data), status=200, mimetype='application/json')
     return resp
 
