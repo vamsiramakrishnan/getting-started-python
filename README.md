@@ -5,7 +5,7 @@
 This is a sample Python application, using the Flask microframework, for use with Wercker.  This application uses the `2.7:slim` container obtained from the [Docker Hub](https://hub.docker.com/_/python/)
 
 ## Setup and Build
-Firstly, ensure you have the [wercker cli installed](http://devcenter.wercker.com/learn/basics/the-wercker-cli.html).
+Firstly, ensure you have the [wercker cli installed](http://devcenter.wercker.com/docs/cli/installation).
 
 Now clone this repo and cd into the directory:
 
@@ -44,7 +44,7 @@ The `dev` target inside `wercker.yml` uses the `internal/watch` step to dynamica
 data = {"cities" : ["San Francisco", "Amsterdam", "Berlin", "New York", "Tokyo", "London"]}
 ```
 
-and then refresh your browser pointing to `http://localhost:5000/cities.` to see:
+and then refresh your browser pointing to `http://localhost:5000/cities.json` to see:
 ```
 ["Amsterdam", "San Francisco", "Berlin", "New York", "Tokyo", "London"]
 ```
