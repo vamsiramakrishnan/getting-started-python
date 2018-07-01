@@ -39,5 +39,5 @@ python-sample-app-build:
         username: gse00014528/api.user
         password: zA(nw>J.sl3(6;.o8>Hy
         tag: latest
-        repository: gse00014528/axisdemo
+        repository: gse00014528/axisdemo/wercker-demo-app
         registry: https://iad.ocir.io
