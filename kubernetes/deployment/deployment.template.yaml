@@ -13,21 +13,13 @@ spec:
     spec:
       terminationGracePeriodSeconds: 60
       containers:
-      - image: quay.io/wercker/kubernetes-ci-cd:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+      - image: iad.ocir.io/gse00014528/axisdemo/wercker-demo-app:latest
         name: webapp
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
           name: http
-
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "250m"
-          limits:
-            memory: "4Gi"
-            cpu: "4"
-
+          
         livenessProbe:
           httpGet:
             path: /cities.json
