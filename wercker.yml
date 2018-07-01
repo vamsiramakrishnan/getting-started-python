@@ -76,4 +76,4 @@ deploy-to-kubernetes:
     - kubectl:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         insecure-skip-tls-verify: true
-        command: create -f .
+        command: apply -f .
