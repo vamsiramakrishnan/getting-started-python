@@ -3,16 +3,12 @@ box:
 # Build definition
 build:
   # The steps that will be executed on build
-  steps:
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
+  steps:  
     - script:
-        name: python unit test
+        name: docker build
         code: |
-          python app_test.py    
-    - internal/docker-build: 
-        dockerfile: Dockerfile 
-        image-name: wercker-demo-app  # name used to refer to this image until it's pushed   
+          # Build the actual container with the Dockerfile (included in the repo)
+          sudo docker build -t $APP_NAME
     - internal/docker-run:
         image: $APP_NAME
         name: demo-app-cicd 
