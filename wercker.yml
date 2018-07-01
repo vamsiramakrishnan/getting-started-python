@@ -29,7 +29,9 @@ build:
         image-name: wercker-demo-app  # name used to refer to this image until it's pushed   
     - internal/docker-run:
         image: wercker-demo-app
-        name: demo-app-cicd     
+        name: demo-app-cicd 
+    - internal/docker-kill:
+        name: demo-app-cicd
 
 python-sample-app-build:
   steps:
@@ -37,5 +39,5 @@ python-sample-app-build:
         username: gse00014528/api.user
         password: zA(nw>J.sl3(6;.o8>Hy
         tag: latest
-        repository: wercker-demo
+        repository: https://iad.ocir.io/wercker-demo
         registry: https://iad.ocir.io
