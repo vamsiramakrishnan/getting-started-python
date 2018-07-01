@@ -31,7 +31,7 @@ build:
         image: wercker-demo-app
         name: myTestContainer     
 
-deploy:
+python-sample-app-build:
   steps:
     - internal/docker-push:
         username: gse00014528/api.user
