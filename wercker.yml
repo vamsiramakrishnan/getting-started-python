@@ -39,5 +39,5 @@ python-sample-app-build:
         username: gse00014528/api.user
         password: zA(nw>J.sl3(6;.o8>Hy
         tag: latest
-        repository: axisdemo
+        repository: gse00014528/axisdemo
         registry: https://iad.ocir.io
