@@ -13,12 +13,12 @@ spec:
     spec:
       terminationGracePeriodSeconds: 60
       containers:
-        - image: iad.ocir.io/gse00014528/axisdemo/wercker-demo-app:latest
-        name: webapp
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
-          name: http
+        - name: webapp
+          image: iad.ocir.io/gse00014528/axisdemo/wercker-demo-app:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 5000
+            name: http
       imagePullSecrets:
         - name: ocir-secret
         livenessProbe:
