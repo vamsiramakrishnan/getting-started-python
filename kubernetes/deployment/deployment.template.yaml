@@ -14,7 +14,7 @@ spec:
       terminationGracePeriodSeconds: 90
       containers:
         - name: webapp
-          image: iad.ocir.io/gse00014528/axisdemo/wercker-demo-app:latest
+          image: iad.ocir.io/gse00014528/axisdemo/sampleflaskapp:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 5000
