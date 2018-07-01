@@ -36,8 +36,8 @@ build:
 python-sample-app-build:
   steps:
     - internal/docker-push:
-        username: gse00014528/api.user
-        password: zA(nw>J.sl3(6;.o8>Hy
+        username: CONTAINER_REGISTRY_USERNAME
+        password: API_USER_TOKEN
         tag: latest
         repository: gse00014528/axisdemo/wercker-demo-app
         registry: https://iad.ocir.io
