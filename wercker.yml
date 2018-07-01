@@ -28,7 +28,7 @@ build:
         dockerfile: Dockerfile 
         image-name: wercker-demo-app  # name used to refer to this image until it's pushed   
     - internal/docker-run:
-        image: wercker-demo-app
+        image: $APP_NAME
         name: demo-app-cicd 
     - internal/docker-kill:
         name: demo-app-cicd
@@ -39,5 +39,5 @@ wercker-demo-cicd:
         username: $CONTAINER_REGISTRY_USERNAME
         password: $API_USER_TOKEN
         tag: latest, $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH
-        repository: gse00014528/axisdemo/wercker-demo-app
-        registry: https://iad.ocir.io
+        repository: $TENANCY_NAME/$REPO_NAME/$APP_NAME
+        registry: $PRIVATE_REGISTRY_PATH
