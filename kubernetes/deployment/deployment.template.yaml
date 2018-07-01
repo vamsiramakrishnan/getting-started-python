@@ -19,7 +19,8 @@ spec:
         ports:
         - containerPort: 5000
           name: http
-          
+      imagePullSecrets:
+        - name: ocir-secret
         livenessProbe:
           httpGet:
             path: /cities.json
