@@ -19,19 +19,19 @@ spec:
           ports:
           - containerPort: 5000
             name: http
+          livenessProbe:
+            httpGet:
+              path: /cities.json
+              port: 5000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /cities.json
+              port: 5000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
       imagePullSecrets:
         - name: ocir-secret
-        livenessProbe:
-          httpGet:
-            path: /cities.json
-            port: 5000
-            scheme: HTTP
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /cities.json
-            port: 5000
-            scheme: HTTP
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
