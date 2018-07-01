@@ -38,6 +38,6 @@ python-sample-app-build:
     - internal/docker-push:
         username: $CONTAINER_REGISTRY_USERNAME
         password: $API_USER_TOKEN
-        tag: latest
+        tag: latest, $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH
         repository: gse00014528/axisdemo/wercker-demo-app
         registry: https://iad.ocir.io
