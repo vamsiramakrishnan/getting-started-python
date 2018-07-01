@@ -1,4 +1,4 @@
-FROM python:3
-ADD my_script.py 
-RUN pip install pystrich
-CMD [ "python", "./my_script.py" ]
+FROM python:2.7-slim
+ADD python app.py 
+RUN pip-install
+CMD [ "python", "./python app.py" ]
