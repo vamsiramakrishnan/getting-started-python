@@ -8,11 +8,13 @@ build:
         name: docker build
         code: |
           # Build the actual container with the Dockerfile (included in the repo)
-          sudo docker build -t sampleflaskapp
-    - internal/docker-run:
-        image: sampleflaskapp
-        name: demo-app-cicd 
-
+          sudo docker build -t sampleflaskapp:latest
+    - script:
+        name: docker build
+        code: |
+          # Build the actual container with the Dockerfile (included in the repo)
+          sudo docker run -d -p 5000:5000 sampleflaskapp
+          
 wercker-demo-cicd:
   steps:
     - internal/docker-push:
