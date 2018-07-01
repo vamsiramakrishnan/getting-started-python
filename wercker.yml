@@ -58,3 +58,5 @@ deploy-to-kubernetes:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         insecure-skip-tls-verify: true
         command: apply -f .
+     -kubectl:
+        command: rolling-update webapp --image=$TENANCY_NAME/$REPO_NAME/sampleflaskapp:latest --image-pull-policy Always
