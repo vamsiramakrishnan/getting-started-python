@@ -23,3 +23,11 @@ build:
         name: python unit test
         code: |
           python app_test.py
+deploy:
+  steps:
+    - internal/docker-push:
+        username: gse00014528/api.user
+        password: zA(nw>J.sl3(6;.o8>Hy
+        tag: latest
+        repository: wercker-demo
+        registry: https://iad.ocir.io
