@@ -70,10 +70,10 @@ deploy-to-kubernetes:
           echo "Docker image and tag:"
           echo "${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}"
     - script:
-        name: Run integration tests
+        name: Export Kubernetes Config
         code: |
           export KUBECONFIG="$WERCKER_ROOT/kubernetes/kube.config"
     - kubectl:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         insecure-skip-tls-verify: true
-        command: --namespace ${KUBE_NAMESPACE} apply -f .
+        command: --namespace wercker-demo apply -f .
