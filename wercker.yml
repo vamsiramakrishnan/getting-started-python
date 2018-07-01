@@ -69,10 +69,11 @@ deploy-to-kubernetes:
           cat $WERCKER_ROOT/kubernetes/deployment/deployment.yaml
           echo "Docker image and tag:"
           echo "${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}"
+    - script:
+        name: Run integration tests
+        code: |
+          export KUBECONFIG="$WERCKER_ROOT/kubernetes/kube.config"
     - kubectl:
         cwd: $WERCKER_ROOT/kubernetes/deployment
-        server: ${KUBE_ENDPOINT}
-        username: ${KUBE_USERNAME}
-        password: ${KUBE_PASSWORD}
         insecure-skip-tls-verify: true
         command: --namespace ${KUBE_NAMESPACE} apply -f .
