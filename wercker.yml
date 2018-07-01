@@ -27,7 +27,7 @@ wercker-demo-cicd:
     - internal/docker-push:
         username: $CONTAINER_REGISTRY_USERNAME
         password: $API_USER_TOKEN
-        tag: latest, $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH
+        tag: latest
         repository: $TENANCY_NAME/$REPO_NAME/$APP_NAME
         registry: $PRIVATE_REGISTRY_PATH
 deploy-to-kubernetes:
