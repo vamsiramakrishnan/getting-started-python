@@ -6,14 +6,11 @@ build:
     - script:
         name: docker build
         code: |
-          # Build the actual container with the Dockerfile (included in the repo)
           sudo docker build -t sampleflaskapp:latest
     - script:
         name: docker build
         code: |
-          # Build the actual container with the Dockerfile (included in the repo)
-          sudo docker run -d -p 5000:5000 sampleflaskapp
-          
+          sudo docker run -d -p 5000:5000 sampleflaskapp   
 wercker-demo-cicd:
   steps:
     - internal/docker-push:
@@ -58,5 +55,5 @@ deploy-to-kubernetes:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         insecure-skip-tls-verify: true
         command: apply -f .
-     -kubectl:
+     - kubectl:
         command: rolling-update webapp --image=$TENANCY_NAME/$REPO_NAME/sampleflaskapp:latest --image-pull-policy Always
