@@ -41,3 +41,38 @@ wercker-demo-cicd:
         tag: latest, $WERCKER_GIT_COMMIT, $WERCKER_GIT_BRANCH
         repository: $TENANCY_NAME/$REPO_NAME/$APP_NAME
         registry: $PRIVATE_REGISTRY_PATH
+deploy-to-kubernetes:
+  steps:
+    - script:
+        name: debug
+        code: |
+          echo $WERCKER_OUTPUT_DIR
+          ls -l $WERCKER_OUTPUT_DIR
+          echo $WERCKER_ROOT
+          ls -l $WERCKER_ROOT
+    - bash-template:
+        cwd: $WERCKER_ROOT/kubernetes/deployment
+
+    - script:
+        name: Remove template files
+        cwd: $WERCKER_ROOT/kubernetes/deployment
+        code: |
+          rm *.template.yaml
+    - script:
+        name: debug
+        cwd: $WERCKER_ROOT/kubernetes/deployment
+        code: |
+          ls -l
+    - script:
+        name: echo tags
+        code: |
+          cat $WERCKER_ROOT/kubernetes/deployment/deployment.yaml
+          echo "Docker image and tag:"
+          echo "${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}"
+    - kubectl:
+        cwd: $WERCKER_ROOT/kubernetes/deployment
+        server: ${KUBE_ENDPOINT}
+        username: ${KUBE_USERNAME}
+        password: ${KUBE_PASSWORD}
+        insecure-skip-tls-verify: true
+        command: --namespace ${KUBE_NAMESPACE} apply -f .
