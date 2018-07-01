@@ -23,6 +23,14 @@ build:
         name: python unit test
         code: |
           python app_test.py
+          
+    - internal/docker-build: 
+        dockerfile: Dockerfile 
+        image-name: wercker-demo-app  # name used to refer to this image until it's pushed   
+    - internal/docker-run:
+        image: wercker-demo-app
+        name: myTestContainer     
+
 deploy:
   steps:
     - internal/docker-push:
