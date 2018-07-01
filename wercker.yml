@@ -58,4 +58,4 @@ deploy-to-kubernetes:
     - kubectl:
         cwd: $WERCKER_ROOT/kubernetes/deployment
         insecure-skip-tls-verify: true
-        command: set image deployment/webapp webapp=$TENANCY_NAME/$REPO_NAME/sampleflaskapp:latest
+        command: set image deployment/webapp webapp=$TENANCY_NAME/$REPO_NAME/sampleflaskapp:latest --imagePullSecrets=ocir-secret
