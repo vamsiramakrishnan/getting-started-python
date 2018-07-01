@@ -8,9 +8,9 @@ build:
         name: docker build
         code: |
           # Build the actual container with the Dockerfile (included in the repo)
-          sudo docker build -t $APP_NAME
+          sudo docker build -t sampleflaskapp
     - internal/docker-run:
-        image: $APP_NAME
+        image: sampleflaskapp
         name: demo-app-cicd 
 
 wercker-demo-cicd:
@@ -19,7 +19,7 @@ wercker-demo-cicd:
         username: $CONTAINER_REGISTRY_USERNAME
         password: $API_USER_TOKEN
         tag: latest
-        repository: $TENANCY_NAME/$REPO_NAME/$APP_NAME
+        repository: $TENANCY_NAME/$REPO_NAME/sampleflaskapp
         registry: $PRIVATE_REGISTRY_PATH
 deploy-to-kubernetes:
   steps:
